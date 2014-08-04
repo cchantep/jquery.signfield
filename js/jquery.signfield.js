@@ -135,7 +135,8 @@
                     'defaultColor': e.data('pen-color') || (
                         e.css('color') || "black"), 
                     'defaultSize': th
-                }).on('mouseup click', function(){ 
+                }).on('click mousedown mouseup mousemove mouseleave mouseout touchstart touchmove touchend touchcancel', 
+                  function(){ 
                     rs.trigger('click');
                     div.trigger('change')
                 });

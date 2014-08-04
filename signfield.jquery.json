@@ -1,12 +1,12 @@
 {
     "name": "signfield",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "title": "Signature field",
     "description": "Provides signature field as jQuery component, using either a sketch pad or an uploaded signature file.",
     "keywords": [ "signature", "sketch", "upload" ],
     "homepage": "http://www.applicius.fr",
     "docs": "https://github.com/applicius/jquery.signfield/blob/master/README.md",
-    "demo": "https://rawgit.com/applicius/jquery.signfield/master/demo.html",
+    "demo": "http://rawgit.com/applicius/jquery.signfield/master/demo.html",
     "bugs": "https://github.com/applicius/jquery.signfield/issues",
     "download": "https://github.com/applicius/jquery.signfield/archive/master.zip",
     "author": {

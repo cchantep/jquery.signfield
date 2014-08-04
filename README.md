@@ -2,7 +2,7 @@
 
 Provides signature field as jQuery component, using either a sketch pad or an uploaded signature file.
 
-See [demo](https://rawgit.com/applicius/jquery.signfield/master/demo.html).
+See [demo](http://rawgit.com/applicius/jquery.signfield/master/demo.html).
 
 > Requires jQuery 1.10+ & [sketch.js](http://intridea.github.com/sketch.js).
 
