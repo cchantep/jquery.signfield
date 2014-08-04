@@ -46,8 +46,7 @@
             var e = $(x), id = e.attr("id"), 
             n = e.data("name"), cs = e.attr("class"),
             div = $('<div class="'+cs+'" id="'+id
-                    + '" data-signature="yes"></div>').
-                attr("data-name", n),
+                    + '" data-signature="yes"></div>'),
             canvas = (!isCanvasSupported()) ? null
                 : $('<canvas></canvas>').appendTo(div),
             f = $('<input type="file" name="'+n+'-file" />').appendTo(div), 
@@ -72,9 +71,7 @@
                                      replace('{1}', max));
                             
                             if ($.trim(es) != "") {
-                                div.data("errors", 
-                                         es + ",file.error.maxSize")
-                                
+                                div.data("errors", es + ",file.error.maxSize")
                             } else div.data("errors", "file.error.maxSize")
                         } else {
                             div.removeClass("has-error");
@@ -92,15 +89,18 @@
                     hf.attr("name", n).attr("value", dc.toDataURL());
                     f.removeAttr("name");
                     
-                    var errs = "";
-                    $.each(div.data('errors').split(','), function(j,er){
-                        if (er && er.length > 11 &&
-                            er.substring(0, 11) == "file.error.") {
-                            return true; // Skip
-                        }
 
-                        if ($.trim(er) != "") errs += er
-                    });
+                    var errs = "", es = div.data('errors');
+                    if ($.trim(es) != "") {
+                        $.each(es.split(','), function(j,er){
+                            if (er && er.length > 11 &&
+                                er.substring(0, 11) == "file.error.") {
+                                return true; // Skip
+                            }
+                            
+                            if ($.trim(er) != "") errs += er
+                        })
+                    }
 
                     div.data("errors", errs);
 
@@ -135,7 +135,8 @@
                     'defaultColor': e.data('pen-color') || (
                         e.css('color') || "black"), 
                     'defaultSize': th
-                }).on('mouseup click', function(){ 
+                }).on('click mousedown mouseup touchstart touchmove touchend touchcancel', 
+                  function(){ 
                     rs.trigger('click');
                     div.trigger('change')
                 });
