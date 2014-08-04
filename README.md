@@ -35,7 +35,7 @@ Consider element thereafter as original one you want to replace with a signature
 - `id` (optional): Signature field identifier.
 - `class` (optional): CSS classes, if present applied on signature field.
 - `data-name` (required): Field name, used on submit.
-- `data-max-size` (optional): If present, used as limit to upload signature file.
+- `data-max-size` (optional): If present, used as limit in kB to upload signature file.
 - `data-pen-thickness` (optional, default = 2): If present and if sketch (canvas) is supported, defines pen thickness.
 - `data-pen-color` (optional): If present and if sketch is supported, defines pen color.
 
@@ -86,7 +86,10 @@ var errs = $('#signature').signField('error');
 Fired when field value is changed, either by uploading a signature file or by sketching one.
 
 ```javascript
-$("#signature").on('change', function() { /* ... */ })
+$("#signature").on('change', function() { 
+  var signature = $(this);
+  // ...
+})
 ```
 
 ## Submit
@@ -99,7 +102,8 @@ A related field, suffixed with `-type` is also submit, with either "canvas" or "
 
 ## Localization
 
-Messages are provided by language pack in separate file (e.g. For english, `lang/jquery.signfield-en.min.js`).
+Messages are provided by language pack in separate file 
+(e.g. For english, `lang/jquery.signfield-en.min.js`).
 
 If you find a language pack is missing, please [file a ticket](https://github.com/playframework/playframework/issues).
 
