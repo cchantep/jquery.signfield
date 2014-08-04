@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signature demo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Just to make this demo look nicer -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+form p{margin-top:1em}#mySignature .radio{margin-left:20px}.clear-canvas{display:block}
+
+.sign-field canvas { 
+  border: 1px silver solid; 
+  width: 350px; height: 200px /* Size of signature image */
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Form with signature field</h1>
+
+      <form method="POST" action="http://requestb.in/q09jypq0">
+        <div id="mySignature" data-name="mySignature" data-max-size="2048" 
+             data-pen-tickness="3" data-pen-color="green" 
+             class="sign-field"></div>
+
+        <p>
+          <a href="http://requestb.in/q09jypq0?inspect"
+             onclick="window.open(this.href);return false">
+            Open request inspector</a> before submitting, to see what is sent.
+        </p>
+
+        <button class="btn btn-primary" disabled="disabled">Submit</button>
+      </form>
+    </div>
+      
+    <script src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//intridea.github.com/sketch.js/lib/sketch.min.js"></script>
+    <script src="lang/jquery.signfield-en.min.js"></script>
+    <script src="js/jquery.signfield.min.js"></script>
+    <script type="text/javascript">
+$('#mySignature').signField(). // Setup
+  on('change', function(){ 
+    var signature = $(this); // div
+
+    if (signature.signField('errors').length == 0) {
+      $('.btn-primary').removeAttr("disabled")
+    } else $('.btn-primary').attr("disabled", "disabled")
+  })
+</script>
+
+    <!-- Just to make this demo look nicer -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">$('.clear-canvas').prepend('<i class="fa fa-eraser"></i>')</script>
+  </body>
+</html>
