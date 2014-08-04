@@ -86,7 +86,10 @@ var errs = $('#signature').signField('error');
 Fired when field value is changed, either by uploading a signature file or by sketching one.
 
 ```javascript
-$("#signature").on('change', function() { /* ... */ })
+$("#signature").on('change', function() { 
+  var signature = $(this);
+  // ...
+})
 ```
 
 ## Submit
@@ -99,7 +102,8 @@ A related field, suffixed with `-type` is also submit, with either "canvas" or "
 
 ## Localization
 
-Messages are provided by language pack in separate file (e.g. For english, `lang/jquery.signfield-en.min.js`).
+Messages are provided by language pack in separate file 
+(e.g. For english, `lang/jquery.signfield-en.min.js`).
 
 If you find a language pack is missing, please [file a ticket](https://github.com/playframework/playframework/issues).
 
