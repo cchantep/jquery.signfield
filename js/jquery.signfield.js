@@ -10,6 +10,19 @@
             ? null : signField_I18N[key];
 
         return localized || ('?'+key+'?')
+    },
+    addError = function(field, key, msg) {
+        var es = field.data("errors");
+
+        if (!field.hasClass("has-error")) field.addClass("has-error");
+
+        $(".message", field).text(msg);
+        
+        if ($.trim(es) != "") {
+            field.data("errors", es + ',' + key)
+        } else field.data("errors", key);
+
+        return field
     };
    
     $.fn.signField = function(arg) {
@@ -35,6 +48,22 @@
             });
 
             return errors
+        }
+
+        if (arguments && arguments.length >= 2) { // Actions
+            var action = arguments[0];
+
+            if (action == "addError" && arguments.length >= 3) {
+                var div = $(this).first();
+
+                if (div.length != 1) return div;
+
+                // ---
+
+                return addError(div, arguments[1], arguments[2])
+            }
+
+            return fields
         }
 
         // ---
@@ -63,16 +92,11 @@
                             ? 0 : df.files[0].size / 1024;
                         
                         if (sz > max) {
-                            var es = div.data("errors");
-                            
-                            div.addClass("has-error");
-                            msg.text(i18n('file.error.maxSize').
+                            addError(div, "file.error.maxSize",
+                                     i18n('file.error.maxSize').
                                      replace('{0}', sz).
-                                     replace('{1}', max));
-                            
-                            if ($.trim(es) != "") {
-                                div.data("errors", es + ",file.error.maxSize")
-                            } else div.data("errors", "file.error.maxSize")
+                                     replace('{1}', max))
+
                         } else {
                             div.removeClass("has-error");
                             msg.text("")

@@ -79,6 +79,20 @@ var errs = $('#signature').signField('error');
 // #signature should have been previously set up as signature field
 ```
 
+#### addError
+
+`.signField('addError', "errorKey", "message")`
+
+Adds and displays a custom error.
+
+```javascript
+$('#signature').signField('addError', "file.error.type-unsupported", 
+  "This kind of file is not supported");
+// #signature should have been previously set up as signature field
+```
+
+> If custom error is related to a selected file, then key must starts with `file.error.`.
+
 ### Events
 
 `change`
