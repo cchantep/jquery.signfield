@@ -1,6 +1,6 @@
 {
     "name": "signfield",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "title": "Signature field",
     "description": "Provides signature field as jQuery component, using either a sketch pad or an uploaded signature file.",
     "keywords": [ "signature", "sketch", "upload" ],
