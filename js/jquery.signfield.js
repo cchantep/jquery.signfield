@@ -48,6 +48,30 @@
             });
 
             return errors
+        } 
+
+        if (arg == "filename") {
+            var f = $('input[type="file"]', this).first();
+
+            if (f.length == 0) return null;
+
+            return f.val()
+        }
+
+        if (arg == "imagedata") {
+            var c = $('input[type="hidden"]', this).first();
+
+            if (c.length == 0) return null;
+
+            return c.val()
+        }
+
+        if (arg == "selectiontype") {
+            var r = $('input[type="radio"]:checked').first();
+
+            if (r.length == 0) return null;
+
+            return r.val()
         }
 
         if (arguments && arguments.length >= 2) { // Actions
@@ -110,9 +134,8 @@
                 hf = $('<input type="hidden" value="" />').appendTo(div),
                 dc = canvas.get(0),
                 selectSketch = function(){
-                    hf.attr("name", n).attr("value", dc.toDataURL());
+                    hf.attr("name", n).val(dc.toDataURL());
                     f.removeAttr("name");
-                    
 
                     var errs = "", es = div.data('errors');
                     if ($.trim(es) != "") {
@@ -137,7 +160,7 @@
                     validateFile()
                 },
                 rs = $('<input type="radio" name="' + n 
-                       + '-type" value="canvas" />').change(selectSketch),
+                       + '-type" value="canvas" />').click(selectSketch),
                 rf = $('<input type="radio" name="' + n 
                        + '-type" value="file" />'),
                 cw = canvas.width(), ch = canvas.height();
@@ -161,9 +184,9 @@
                     'defaultSize': th
                 }).on('click mousedown mouseup touchstart touchmove touchend touchcancel', 
                   function(){ 
-                    rs.trigger('click');
-                    div.trigger('change')
-                });
+                      rs.trigger('click');
+                      div.trigger('change')
+                  });
 
                 $('<label class="radio sketch-radio">' + i18n('sketch.label') +
                   '</label>').prepend(rs).insertBefore(canvas);

@@ -68,17 +68,6 @@ If signature component wants to raise an error, CSS class `has-error` is added t
 
 ### Methods
 
-#### errors
-
-`.signField('errors')`
-
-If there is error for a signature field, returns array of error keys or `[]` (if none).
-
-```javascript
-var errs = $('#signature').signField('error');
-// #signature should have been previously set up as signature field
-```
-
 #### addError
 
 `.signField('addError', "errorKey", "message")`
@@ -92,6 +81,47 @@ $('#signature').signField('addError', "file.error.type-unsupported",
 ```
 
 > If custom error is related to a selected file, then key must starts with `file.error.`.
+
+#### errors
+
+`.signField('errors')`
+
+If there is error for a signature field, returns array of error keys or `[]` (if none).
+
+```javascript
+var errs = $('#signature').signField('error');
+// #signature should have been previously set up as signature field
+```
+
+#### filename
+
+`.signField('filename')`
+
+Returns name of selected file if any, or `null` if none.
+
+```javascript
+var filename = $('#signature').signField('filename')
+```
+
+#### imagedata
+
+`.signField('imagedata')`
+
+Returns image PNG data for a sketched signature, in data URI format if any, or `null` if none.
+
+```javascript
+var imagedata = $('#signature').signField('imagedata')
+```
+
+#### selectiontype
+
+`.signField('selectiontype')`
+
+Returns type of selected signature, either `file` or `canvas` (or null if none).
+
+```javascript
+var seltype = $('#signature').signField('selectiontype')
+```
 
 ### Events
 
