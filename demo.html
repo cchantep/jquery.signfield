@@ -21,15 +21,14 @@ form p{margin-top:1em}#mySignature .radio{margin-left:20px}.clear-canvas{display
     <div class="container">
       <h1>Form with signature field</h1>
 
-      <form method="POST" action="http://requestb.in/q09jypq0">
+      <form method="POST" action="#dump">
         <div id="mySignature" data-name="mySignature" data-max-size="2048" 
              data-pen-tickness="3" data-pen-color="green" 
              class="sign-field"></div>
 
         <p>
-          <a href="http://requestb.in/q09jypq0?inspect"
-             onclick="window.open(this.href);return false">
-            Open request inspector</a> before submitting, to see what is sent.
+          <a href="#inspect">Open request inspector</a> 
+          before submitting, to see what is sent.
         </p>
 
         <button class="btn btn-primary" disabled="disabled">Submit</button>
@@ -50,6 +49,9 @@ $('#mySignature').signField(). // Setup
     } else $('.btn-primary').attr("disabled", "disabled")
   })
 </script>
+
+    <!-- Request inspector for demo -->
+    <script type="text/javascript">$.ajax({"type":"POST","url": "http://requestb.in/api/v1/bins","data":{"private":"false"}}).done(function(d){ var ru="http://requestb.in/"+d.name; $('a[href="#inspect"]').click(function(){ window.open(ru + "?inspect"); return false }); $('form').attr("action", ru) })</script>
 
     <!-- Just to make this demo look nicer -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

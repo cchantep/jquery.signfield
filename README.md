@@ -1,6 +1,6 @@
 # jQuery signature field
 
-Provides signature field as jQuery component, using either a sketch pad or an uploaded signature file.
+Provides signature field as [jQuery component](http://plugins.jquery.com/signfield/), using either a sketch pad or an uploaded signature file.
 
 See [demo](http://rawgit.com/applicius/jquery.signfield/master/demo.html).
 
