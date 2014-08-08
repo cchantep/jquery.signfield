@@ -140,7 +140,9 @@ $("#signature").on('change', function() {
 
 When form including a signature field is submitted, either canvas image data or uploaded file is sent as field value.
 
-A related field, suffixed with `-type` is also submit, with either "canvas" or "file" as value, so that you can process signature data accordingly.
+A related field, suffixed with `-type` is also submitted, with either "canvas" or "file" as value, so that you can process signature data accordingly. 
+
+If canvas image data is submitted, then another field suffixed with `-dpi` is added, so that you get DPI meta data, according screen on which canvas was used.
 
 > Canvas image is submitted as PNG data, using [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/data_URIs) format.
 

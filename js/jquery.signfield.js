@@ -105,6 +105,8 @@
             f = $('<input type="file" name="'+n+'-file" />').appendTo(div), 
             df = f.get(0),
             msg = $('<span class="message"></span>').appendTo(div),
+            rule = $('<div style="width:1in;height:1px"></div>').appendTo(div),
+            dpi = $('<input type="hidden" />').appendTo(div),
             validateFile = function(f){ return true };
 
             if (df['files']/* has File API */) {
@@ -136,6 +138,7 @@
                 selectSketch = function(){
                     hf.attr("name", n).val(dc.toDataURL());
                     f.removeAttr("name");
+                    dpi.attr("name", n+"-dpi");
 
                     var errs = "", es = div.data('errors');
                     if ($.trim(es) != "") {
@@ -156,6 +159,7 @@
                 selectFile = function(){
                     hf.removeAttr("name");
                     f.attr("name", n);
+                    dpi.attr("name", "");
 
                     validateFile()
                 },
@@ -211,7 +215,11 @@
             });
             
             e.replaceWith(div);
-            components.push(div.get(0));
+
+            dpi.val(rule.width()); // after 'div' displayed
+            rule.remove();
+            
+            components.push(div.get(0))
         });
 
         return $(components)
