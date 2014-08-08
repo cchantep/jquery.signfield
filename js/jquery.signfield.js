@@ -135,6 +135,7 @@
                 var th = e.data("pen-tickness") || 2,
                 hf = $('<input type="hidden" value="" />').appendTo(div),
                 dc = canvas.get(0),
+                w = e.data("width"), h = e.data("height"),
                 selectSketch = function(){
                     hf.attr("name", n).val(dc.toDataURL());
                     f.removeAttr("name");
@@ -167,7 +168,7 @@
                        + '-type" value="canvas" />').click(selectSketch),
                 rf = $('<input type="radio" name="' + n 
                        + '-type" value="file" />'),
-                cw = canvas.width(), ch = canvas.height();
+                cw = w || canvas.width(), ch = h || canvas.height();
 
                 rf.change(function(){
                     if ($.trim(f.val()) == "") { 
