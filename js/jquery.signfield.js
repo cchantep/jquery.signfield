@@ -1,6 +1,32 @@
 (function ($) {
     "use strict";
 
+    var markr = $.sketch.tools['marker'], 
+    _draw = markr.draw;
+
+    markr.draw = function(d){ // Extends marker action
+        var i, filtered = [], e, c = this.canvas;
+
+        for (i = 0; i < d.events.length; i++) {
+            e = d.events[i];
+
+            if (e._type != "drawImage") { filtered.push(e); continue }
+
+            // ---
+
+            this.context.drawImage(e.image, 0, 0);
+
+            
+
+            setTimeout(function(){
+                c.trigger('change')
+                // see canvas.sketch(...).on("change ...") thereafter
+            }, 1000)
+        }
+
+        ({ context: this.context, draw: _draw }).draw(d)
+    };
+
     var isCanvasSupported = function(){
         var e = document.createElement('canvas');
         return !!(e.getContext && e.getContext('2d'))
@@ -23,6 +49,20 @@
         } else field.data("errors", key);
 
         return field
+    },
+    load = function(canvas, url) {
+        var img = new Image();
+
+        $(img).load(function(){
+            var actions = canvas.sketch().actions;
+            actions.push({
+                'tool': "marker",
+                'events': [{'_type':"drawImage", 'image':this}]
+            });
+                  
+            canvas.sketch('actions', actions);
+            canvas.sketch('redraw')
+        }).attr("src", _sample);
     };
    
     $.fn.signField = function(arg) {
@@ -58,8 +98,16 @@
             return f.val()
         }
 
+        var args = arguments;
+
+        if (arg == "imagedata" && args && args.length >= 2) {
+            return $(this).each(function(i, e){ 
+                load($('canvas', e), args[1]) 
+            })
+        }
+
         if (arg == "imagedata") {
-            var c = $('input[type="hidden"]', this).first();
+            var c = $('.imgdata', this).first();
 
             if (c.length == 0) return null;
 
@@ -74,17 +122,17 @@
             return r.val()
         }
 
-        if (arguments && arguments.length >= 2) { // Actions
-            var action = arguments[0];
+        if (args && args.length >= 2) { // Actions
+            var action = args[0];
 
-            if (action == "addError" && arguments.length >= 3) {
+            if (action == "addError" && args.length >= 3) {
                 var div = $(this).first();
 
                 if (div.length != 1) return div;
 
                 // ---
 
-                return addError(div, arguments[1], arguments[2])
+                return addError(div, args[1], args[2])
             }
 
             return fields
@@ -133,7 +181,8 @@
             
             if (canvas) {
                 var th = e.data("pen-tickness") || 2,
-                hf = $('<input type="hidden" value="" />').appendTo(div),
+                hf = $('<input type="hidden" class="imgdata" value="" />').
+                    appendTo(div),
                 dc = canvas.get(0),
                 w = e.data("width"), h = e.data("height"),
                 selectSketch = function(){
@@ -187,8 +236,7 @@
                     'defaultColor': e.data('pen-color') || (
                         e.css('color') || "black"), 
                     'defaultSize': th
-                }).on('click mousedown mouseup touchstart touchmove touchend touchcancel', 
-                  function(){ 
+                }).on('change click mousedown mouseup touchstart touchmove touchend touchcancel', function(){ 
                       rs.trigger('click');
                       div.trigger('change')
                   });

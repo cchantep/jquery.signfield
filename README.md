@@ -103,7 +103,7 @@ Returns name of selected file if any, or `null` if none.
 var filename = $('#signature').signField('filename')
 ```
 
-#### imagedata
+#### imagedata (getter)
 
 `.signField('imagedata')`
 
@@ -111,6 +111,16 @@ Returns image PNG data for a sketched signature, in data URI format if any, or `
 
 ```javascript
 var imagedata = $('#signature').signField('imagedata')
+```
+
+#### imagedata (setter)
+
+`.signField('imagedata', dataURI)`
+
+Load PNG image from given `dataURI` into signature canvas (if supported).
+
+```javascript
+$('#signature').signField('imagedata', aDataUri)
 ```
 
 #### selectiontype

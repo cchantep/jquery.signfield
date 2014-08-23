@@ -22,6 +22,11 @@ form p{margin-top:1em}#mySignature .radio{margin-left:20px}.clear-canvas{display
       <h1>Form with signature field</h1>
 
       <form method="POST" action="#dump">
+        <div>
+          <button class="btn btn-default" id="reload">Reload</button>
+          a previously drawn signature (saved as <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/data_URIs" rel="external friend" onclick="window.open(this.href);return false">data URI</a>).
+        </div>
+
         <div id="mySignature" data-name="mySignature" data-max-size="2048" 
              data-pen-tickness="3" data-pen-color="green" 
              class="sign-field"></div>
@@ -39,15 +44,21 @@ form p{margin-top:1em}#mySignature .radio{margin-left:20px}.clear-canvas{display
     <script src="//intridea.github.com/sketch.js/lib/sketch.min.js"></script>
     <script src="lang/jquery.signfield-en.min.js"></script>
     <script src="js/jquery.signfield.min.js"></script>
+    <script src="demo.js"></script>
     <script type="text/javascript">
-$('#mySignature').signField(). // Setup
+var s = $('#mySignature').signField(). // Setup
   on('change', function(){ 
     var signature = $(this); // div
 
     if (signature.signField('errors').length == 0) {
       $('.btn-primary').removeAttr("disabled")
     } else $('.btn-primary').attr("disabled", "disabled")
-  })
+  });
+
+$('#reload').click(function(){ 
+  s.signField('imagedata', _sample);
+  return false
+})
 </script>
 
     <!-- Request inspector for demo -->
