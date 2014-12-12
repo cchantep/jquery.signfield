@@ -4,7 +4,13 @@ Provides signature field as [jQuery component](http://plugins.jquery.com/signfie
 
 See [demo](http://rawgit.com/applicius/jquery.signfield/master/demo.html).
 
-> Requires jQuery 1.10+ & [sketch.js](http://intridea.github.com/sketch.js).
+## Get started
+
+Files of this plugin can be download from the source repository: [js/](https://github.com/applicius/jquery.signfield/tree/master/js) and [lang/](https://github.com/applicius/jquery.signfield/tree/master/lang) sub-directories.
+
+> It requires jQuery 1.10+ and [sketch.js](http://intridea.github.com/sketch.js).
+
+Signature field plugin is also available as a [NPM package](https://www.npmjs.com/package/jquery.signfield): `npm install jquery.signfield`
 
 ## Setup
 
@@ -18,7 +24,7 @@ Following scripts must be included at bottom of page body.
 <script src="lang/jquery.signfield-en.min.js"></script>
 
 <!-- Component script -->
-<script src="jquery.signfield.min.js"></script>
+<script src="js/jquery.signfield.min.js"></script>
 ```
 
 ## JavaScript usage
