@@ -2,11 +2,11 @@
 
 Provides signature field as [jQuery component](http://plugins.jquery.com/signfield/), using either a sketch pad or an uploaded signature file.
 
-See [demo](http://rawgit.com/applicius/jquery.signfield/master/demo.html).
+See [demo](http://rawgit.com/cchantep/jquery.signfield/master/demo.html).
 
 ## Get started
 
-Files of this plugin can be download from the source repository: [js/](https://github.com/applicius/jquery.signfield/tree/master/js) and [lang/](https://github.com/applicius/jquery.signfield/tree/master/lang) sub-directories.
+Files of this plugin can be download from the source repository: [js/](https://github.com/cchantep/jquery.signfield/tree/master/js) and [lang/](https://github.com/cchantep/jquery.signfield/tree/master/lang) sub-directories.
 
 > It requires jQuery 1.10+ and [sketch.js](http://intridea.github.com/sketch.js).
 

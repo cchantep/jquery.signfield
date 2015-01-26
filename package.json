@@ -1,6 +1,6 @@
 {
   "name": "jquery.signfield",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Provides signature field as jQuery component, using either a sketch pad or an uploaded signature file.",
   "main": "js/jquery.signfield.min.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/applicius/jquery.signfield.git"
+    "url": "https://github.com/cchantep/jquery.signfield.git"
   },
   "keywords": [ "signature", "sketch", "upload" ],
   "contributors": [
@@ -21,10 +21,10 @@
     "lang/jquery.signfield-fr.min.js"
   ],
   "dependencies": { "jquery": ">=1.10.2" },
-  "author": { "name": "Applicius", "url": "http://www.applicius.fr" },
+  "author": { "name": "cchantep", "url": "https://github.com/cchantep/jquery.signfield" },
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/applicius/jquery.signfield/issues"
+    "url": "https://github.com/cchantep/jquery.signfield/issues"
   },
-  "homepage": "https://github.com/applicius/jquery.signfield"
+  "homepage": "https://github.com/cchantep/jquery.signfield"
 }
